@@ -8,7 +8,7 @@ class Account:
     email = ''
     password = ''
 
-    def __init__(self) -> None:
+    def __init__(self):
         current_dir = os.path.dirname(__file__)
         json_file = os.path.join(current_dir, 'config/account.json')
         json_data = json.load(open(json_file))

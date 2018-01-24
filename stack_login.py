@@ -25,10 +25,9 @@ class StackOverflow:
         account = Account()
         print('Email : {}\nPassword : {}'.format(account.email, account.password))
         payload = self.get_payload(account)
-        response = requests.post(self.base_url, data=payload, headers=self.headers, params=self.params,
-                                 allow_redirects=False)
-        if response.status_code == 302:
-            print("\033[92mLogged in:", datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
+        response = requests.post(self.base_url, data=payload, headers=self.headers, params=self.params)
+        if response.history:
+            print("\033[92mLogged in:{} with fkey: {}".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), payload['fkey']))
         else:
             print("\033[91mPlease check your email and password."
                   "If nothing wrong, please report this issue to https://github.com/CoXier/stackoverflow-login/issues")

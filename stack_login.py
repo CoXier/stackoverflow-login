@@ -21,16 +21,20 @@ class StackOverflow:
     }
 
     def login(self):
+        session = requests.session()
         print('Start login ...')
         account = Account()
         print('Email : {}\nPassword : {}'.format(account.email, account.password))
         payload = self.get_payload(account)
-        response = requests.post(self.base_url, data=payload, headers=self.headers, params=self.params)
+        response = session.post(self.base_url, data=payload, headers=self.headers, params=self.params)
         if response.history:
-            print("\033[92mLogged in:{} with fkey: {}".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), payload['fkey']))
+            print("\033[92mLogged in:{} with fkey: {}\033[0m".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                                                                     payload['fkey']))
         else:
             print("\033[91mPlease check your email and password."
-                  "If nothing wrong, please report this issue to https://github.com/CoXier/stackoverflow-login/issues")
+                  "If nothing wrong, please report this issue to https://github.com/CoXier/stackoverflow-login/issues\033[0m")
+        # Only for continuous login
+        r = session.get("https://stackoverflow.com/")
 
     def get_fkey(self):
         print('Retrieving fkey information...')

@@ -30,11 +30,12 @@ class StackOverflow:
         if response.history:
             print("\033[92mLogged in:{} with fkey: {}\033[0m".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
                                                                      payload['fkey']))
+            profile_url = self.get_profile_url(session)
+            session.get(profile_url)
+
         else:
             print("\033[91mPlease check your email and password."
                   "If nothing wrong, please report this issue to https://github.com/CoXier/stackoverflow-login/issues\033[0m")
-        # Only for continuous login
-        r = session.get("https://stackoverflow.com/")
 
     def get_fkey(self):
         print('Retrieving fkey information...')
@@ -53,6 +54,11 @@ class StackOverflow:
             'openid_username': '',
             'ssrc': 'head',
         }
+
+    def get_profile_url(self, session):
+        response = session.get("https://stackoverflow.com/")
+        html = response.text
+        return "https://stackoverflow.com" + re.search(r'<a href="(.+)" class="my-profile', html).group(1)
 
 
 if __name__ == '__main__':

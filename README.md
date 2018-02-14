@@ -1,8 +1,10 @@
 # stackoverflow-login
-连续登录了二十几天 StackOverflow 断了，又要重新开始登录，要是能有个自动登录的脚本就好了。所以这个脚本就是为了自动登录 StackOverflow。
+English version | [中文](README_CN.md)
 
-# 用法
-在 `config/account.json` 中填写你的邮箱和密码。
+This project is for consecutive visit on https://stackoverflow.com/ .If you visit https://stackoverflow.com/ for 30 consecutive days, you can earn `Enthuiast` bage. And 100 days, `Fanatic` bage.
+
+# Usage
+Input your email and password in `config/account.json`
 
 ```bash
 {
@@ -10,14 +12,16 @@
   "password": "your_password"
 }
 ```
-然后执行：
+Then
 
 ```bash
 pip install -r requirements.txt
 python stack_login.py
 ```
-你可以把这个脚本放在服务器上，每天自动登录一次。参考脚本：
+And you should better put this project on a server because it can login automatically every day. Here is a script `robot.sh` in `stackoverflow-login/dev_script/robot.sh`.
 
+An example for schedule job.
+ 
 ```bash
 crontab -e
 # put below command to new tab

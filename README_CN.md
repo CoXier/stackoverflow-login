@@ -11,13 +11,7 @@
   "password": "your_password"
 }
 ```
-然后执行：
-
-```bash
-pip install -r requirements.txt
-python stack_login.py
-```
-你可以把这个脚本放在服务器上，每天自动登录一次。参考脚本：
+你可以把这个脚本放在服务器上，每天自动登录一次。参考脚本，**请注意脚本所在的路径**，替换即可。
 
 ```bash
 crontab -e

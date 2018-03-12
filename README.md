@@ -12,15 +12,9 @@ Input your email and password in `config/account.json`
   "password": "your_password"
 }
 ```
-Then
+Then you should better put this project on a server because it can login automatically every day. Here is a script `robot.sh` in `stackoverflow-login/dev_script/robot.sh`.
 
-```bash
-pip install -r requirements.txt
-python stack_login.py
-```
-And you should better put this project on a server because it can login automatically every day. Here is a script `robot.sh` in `stackoverflow-login/dev_script/robot.sh`.
-
-An example for schedule job.
+An example for schedule job. **Note: the path of bash script**. 
  
 ```bash
 crontab -e

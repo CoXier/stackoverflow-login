@@ -1,1 +1,1 @@
-0 0 * * * /app/dev_script/robot.sh
+0 0 * * * /app/dev_script/robot.sh >> /var/log/login.log

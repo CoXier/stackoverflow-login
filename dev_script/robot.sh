@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-python ../stack_login.py
+python /$APPPATH/stack_login.py

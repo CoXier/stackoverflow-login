@@ -1,5 +1,6 @@
 FROM python:3.7.2-alpine3.9
-MAINTAINER yujiangshui "hi@harryyu.me"
+LABEL maintainer="hi@harryyu.me"
+
 
 ENV APPPATH /app
 COPY . ${APPPATH}

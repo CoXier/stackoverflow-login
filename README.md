@@ -1,16 +1,43 @@
 # stackoverflow-login
 English version | [中文](README_CN.md)
 
-This project is for consecutive visit on https://stackoverflow.com/ .If you visit https://stackoverflow.com/ for 30 consecutive days, you can earn `Enthuiast` bage. And 100 days, `Fanatic` bage.
+This project is for a consecutive visit on https://stackoverflow.com/. If you visit https://stackoverflow.com/ for 30 consecutive days, you can earn `Enthusiast` badge. And 100 days, `Fanatic` badge.
 
-# Usage
+## Usage
 
-Setting your `email` and `password` by the environments `EMAIL` and `PASS` respectively.
+**By Docker (recommend):**
 
-Then you should better put this project on a server because it can login automatically every day. Here is a script `robot.sh` in `stackoverflow-login/dev_script/robot.sh`.
+You can build the Docker Image yourself, or use my Image [yujiangshui/stackoverflow-login](https://cloud.docker.com/u/yujiangshui/repository/docker/yujiangshui/stackoverflow-login).
 
-An example for schedule job. **Note: the path of bash script**. 
- 
+Run `docker run -e EMAIL="your-email" -e PASS="your-password" -d yujiangshui/stackoverflow-login`.
+
+Or, use Docker Compose. Create `docker-compose.yml` and type the following:
+
+```
+version: '3.1'
+
+services:
+
+  stackoverflow-login:
+    image: yujiangshui/stackoverflow-login
+    restart: always
+    environment:
+      EMAIL: your-email
+      PASS: your-pass
+```
+
+After that, run `docker-compose up -d`.
+
+**By Python**
+
+First, install the dependencies in `requirements.txt`, then, setting up Environment Variables:
+
+* `EMAIL` your StackOverflow Account Email
+* `PASS` your StackOverflow Account Password
+* `APPPATH` point to this application's path, e.g, `export APPPATH=/root/apps/stackoverflow-login`
+
+After that, you can choose to set a schedule task by crontab:
+
 ```bash
 crontab -e
 # put below command to new tab
